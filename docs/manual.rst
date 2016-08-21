@@ -1145,6 +1145,14 @@ This predicate applies to all types and is the inverse of :meth:`intersects`.
 In other words, geometric objects intersect if they have any boundary or 
 interior point in common.
 
+.. method:: object.overlaps(other)
+
+  Returns ``True`` if the object and the other share some but not all points,
+  and the intersection has the same dimension as the Geometries themselves
+
+In other words, geometric objects overlap if they have a common point,
+are not equal, and their intersection have the same dimension.
+
 .. method:: object.touches(other)
 
   Returns ``True`` if the objects have at least one point in common and their
@@ -2202,7 +2210,7 @@ first use the :func:`prepared.prep` function.
   >>> hits = filter(prepared_polygon.contains, points)
 
 Prepared geometries instances have the following methods: ``contains``,
-``contains_properly``, ``covers``, and ``intersects``. All have exactly the
+``contains_properly``, ``covers``, ``overlaps`` and ``intersects``. All have exactly the
 same arguments and usage as their counterparts in non-prepared geometric
 objects.
 
